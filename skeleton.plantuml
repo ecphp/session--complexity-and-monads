@@ -1,0 +1,68 @@
+@startmindmap
+
+' - Ajouter un fil rouge
+' - Garder ce fil rouge au long de la presa
+' - Complexity - montrer des exemples avant/apres
+' - Ne pas introduire les monades directement - le dire a la fin.
+' - Lister quelques monades dans differents languages
+
++ **EC Monad presentation**
+++ Find title
+++ Find date
+++ Organize bi-weekly meeting
+++ Find relevant code examples (most important thing!)
+++ Presentation structure
++++ Introduction
++++ History of languages
+++++ Object oriented programming
+++++ Functional
++++ Define languages to use
+++++ PHP
+++++ Javascript
+++++ Rust
+++++ Java
++++ Complexity
+++++ What it is
++++++ Show concrete use cases
++++++ Doctrine repositories? (Add conditions after every calls)
+++++ How to measure complexity?
++++++ Concrete use case with PHPMD
+++++ How to deal with Complexity
++++++ Avoid partial function
+++++++ Show examples with code
++++++ Avoid mixing types
+++++++ Show examples with code
++++++ Flattening structures
+++++++ Use tricks
++++++++ Early returns
++++++++ Avoid else statements
++++++++ Avoid variable creations
++++++++ Think in terms of transformations
+++++++ Show examples with code
++++++ Abstracting the complexity away? somewhere else? Where?
++++ Back to basics with functions
+++++ Why not mixing types is important? (doctrine repositories example)
+++++ Partial function
++++++ Definition
++++++ Examples
+++++ Total function
++++++ Definition
++++++ Examples
+++++ Benefits ? Pro / cons
++++++ Strict typing
++++++ Verbosity
++++ Introduce monads
+++++ Short definition
+++++ History
+++++ Languages that uses monads in their core
++++++ Java (Stream, Optional)
++++++ Haskell
++++++ Rust
++++ The Maybe monad
+++++ Show concrete use cases
++++ The Either monad
+++++ Show concrete use cases
+
+
+
+@endmindmap

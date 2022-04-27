@@ -1,0 +1,118 @@
+\begin{sepframe}{Introduction}
+    {\scriptsize{Simplicity is the ultimate sophistication. L. Da Vinci}}
+\end{sepframe}
+
+\begin{frame}
+    \frametitle{Introduction}
+    \framesubtitle{Complexity}
+
+    \begin{itemize}[<+->]
+        \item In this presentation, we are going to dive into software development
+        and try to understand why reading and writing code can sometimes be
+        complex.
+        \item We are going to define what makes code difficult to understand and
+        find where complexity comes from.
+        \item We are also going to give you tips and tricks to reduce code complexity.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    What makes a code complex
+\end{frame}
+
+\begin{frame}{Introduction}
+    \frametitle{Introduction}
+    \framesubtitle{Complexity}
+
+    \begin{itemize}[<+->]
+        \item Given an anonymous user
+        \item When I reach the page /something/<any-number>
+        \item Then it finds the entity with id <any-number>
+        \item And the entity has a title
+        \item And the title starts with 'abc'
+        \item Then it returns the entity title in uppercase
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,c]
+    \lstinputlisting{src/session/introduction/resources/complexity-example.php}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+    \framesubtitle{Complexity}
+
+    \begin{itemize}[<+->]
+        \item Is it the amount of language keywords?
+        \item Is it the syntax of the language?
+        \item Is it the amount of decision points?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+    \framesubtitle{Complexity}
+
+    \begin{itemize}[<+->]
+        \item Is it the amount of language keywords?
+        \begin{itemize}
+            \item Smalltalk: \textpm 6
+            \item C: 32
+            \item Haskell: 55
+            \item Javascript: \textpm 64
+            \item F\#: 103
+            \item PHP: \textpm 67
+        \end{itemize}
+        \item Is it the syntax of the language?
+        \begin{itemize}
+            \item Parenthesis
+            \item Semicolon
+            \item Indentation
+        \end{itemize}
+        \item Is it the amount of decision points?
+        \begin{itemize}
+            \item If: 4
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+    \framesubtitle{Complexity}
+
+    \begin{itemize}[<+->]
+        \item Time complexity
+        \begin{itemize}
+            \item The amount of elementary operations
+        \end{itemize}
+        \item Space complexity
+        \begin{itemize}
+            \item The amount of memory a program is using.
+        \end{itemize}
+        \item Kolmogorov complexity
+        \begin{itemize}
+            \item Given an output, this is the length of a shortest computer
+            program that produces the output.
+        \end{itemize}
+        \item Cyclomatic complexity
+        \begin{itemize}
+            \item The quantitative measure of the number of linearly
+            independent paths through a program's source code.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+When building an application with a framework, all the tools are already
+there, only the business logic needs to be implemented. We often rely on already
+existing tools, using them is usually what introduces most of complexity.
+\\
+\pause
+\vspace{\baselineskip}
+The design of these tools have a great impact on how the end user will use them
+and therefore, on the overall complexity of the application.
+\\
+\pause
+\vspace{\baselineskip}
+So today we are going to only focus on the \textbf{Cyclomatic complexity}.
+\end{frame}

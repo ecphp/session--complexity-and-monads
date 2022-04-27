@@ -1,0 +1,20 @@
+@startuml
+
+digraph G {
+    Exception1 [label="?"]
+    Exception2 [label="?"]
+    Exception3 [label="?"]
+    Exception4 [label="?"]
+    title2 [label="$title"]
+    "$id" -> "$entity" [label="$this->repository->find($id)"]
+    "$entity" -> Exception1
+    "$entity" -> "$author" [label="$entity->getAuthor()"]
+    "$author" -> Exception2
+    "$author" -> "$title" [label="$entity->getTitle()"]
+    "$title" -> Exception3
+    "$title" -> title2 [label="str_start_with()"]
+    title2 -> Exception4
+    title2 -> return
+}
+
+@enduml
