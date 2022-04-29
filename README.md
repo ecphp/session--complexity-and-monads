@@ -29,7 +29,9 @@ nix build -o session.pdf
 ## References and sources
 
 - https://richardeng.medium.com/how-to-measure-programming-language-complexity-afe4f7e75786
--
+- http://rigaux.org/language-study/diagram.html
+- https://programminglanguages.info/influence-network/
+- https://exploring-data.com/vis/programming-languages-influence-network/
 
 [1]: https://github.com/loophp/DockLatex/
 [2]: https://www.latex-project.org/
