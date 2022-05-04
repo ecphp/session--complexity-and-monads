@@ -25,11 +25,12 @@
     \framesubtitle{Complexity}
 
     \begin{itemize}[<+->]
-        \item Given an anonymous user
+        \item Given a user
         \item When I reach the page /something/<any-number>
         \item Then it finds the entity with id <any-number>
-        \item And the entity has a title
-        \item And the title starts with 'abc'
+        \item And the entity author ID is 1
+        \item And the entity title is not empty
+        \item And the entity title starts with 'abc'
         \item Then it returns the entity title in uppercase
     \end{itemize}
 \end{frame}
