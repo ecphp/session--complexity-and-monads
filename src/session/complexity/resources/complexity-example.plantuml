@@ -1,0 +1,26 @@
+@startuml
+
+digraph G {
+    Exception1 [label="?", color=grey]
+    Exception2 [label="?", color=grey]
+    Exception3 [label="?", color=grey]
+    Exception4 [label="?", color=grey]
+    "$id" [label="$id", shape=circle]
+    "$entity" [label="null !== $entity", shape=box]
+    "$author" [label="1 === $author", shape=box]
+    "$title" [label="null !== $title", shape=box]
+    title2 [label="str_starts_with(strtolower($title), 'abc')", shape=box]
+    return [label="return strtoupper($title)", shape=cds]
+
+    "$id" -> "$entity" [label="$entity = $this->repository->find($id)", color="green", shape=point]
+    "$entity" -> Exception1 [color="red"]
+    "$entity" -> "$author" [label="$author = $entity->getAuthor()", color="green"]
+    "$author" -> Exception2 [color="red"]
+    "$author" -> "$title" [label="$title = $entity->getTitle()", color="green"]
+    "$title" -> Exception3 [color="red"]
+    "$title" -> title2 [color="green"]
+    title2 -> Exception4 [color="red"]
+    title2 -> return [color="green"]
+}
+
+@enduml
