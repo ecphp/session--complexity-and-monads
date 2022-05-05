@@ -165,12 +165,20 @@
     \end{lstlisting}
 \end{frame}
 
-
 \begin{frame}
     \frametitle{Complexity}
     \framesubtitle{Cyclomatic complexity}
 
     \lstinputlisting{src/session/complexity/resources/complexity-example-early-returns.php}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Cyclomatic complexity}
+
+\lstinputlisting[caption={Imperative programming}]{src/session/complexity/resources/avoid-else1-a.js}
+\pause
+\lstinputlisting[caption={Declarative programming}]{src/session/complexity/resources/avoid-else1-b.js}
 \end{frame}
 
 \begin{frame}
@@ -185,3 +193,87 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Imperative programming}
+
+    Imperative programming tells the machine how to do something.
+
+    \pause
+
+    (resulting in what you want to happen).
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Declarative programming}
+
+    Declarative programming tells the machine what you would like to happen.
+
+    \pause
+
+    (and the computer figures out how to do it)
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Imperative and declarative programming}
+
+\lstinputlisting[caption={Imperative programming}]{src/session/history/resources/oop.js}
+\pause
+\lstinputlisting[caption={Declarative programming}]{src/session/history/resources/fp.js}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Imperative and declarative programming}
+
+\lstinputlisting[caption={Imperative programming}]{src/session/complexity/resources/imperative1.js}
+\pause
+\lstinputlisting[caption={Declarative programming}]{src/session/complexity/resources/declarative1.js}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Abstracting away the complexity?}
+
+    Have you every wondered why there are so much packages existing for a
+    particular languages?\\
+    \pause
+    Most probably they were created to fix particular and recurrent issues or
+    boring problematic?\\
+    \pause
+    Sometimes it could be nice to query the language package managers to find if
+    the solution to your problem doesn't already exists!\\
+    \pause
+    This would delegate the responsibility somewhere else and reduce the overall
+    complexity of your application.\\
+    \pause
+    It is also less code to maintain and thus, less prone to bugs.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Confidence in other packages?}
+
+    Relying on someone else's code means a lot, for some reason people prefer
+    redoing things on their own.\\
+    \pause
+    I believe that developers should be able to evaluate the trust into a
+    package based on some key indicators.\\
+    \pause
+    Tests, popularity, code lisibility, code extensibility, code practices...
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
+    \framesubtitle{Confidence in other packages?}
+
+    This is the reason why when making a package, it's better to be as strict
+    as possible so the developer using your code doesn't have any surprise when
+    using your code in its own.\\
+    \pause
+    Avoid mixing types, throw proper exceptions in case of issues, etc etc.\\
+    \pause
+    Let's remind to the audience how to put those tips in practice.
+\end{frame}
