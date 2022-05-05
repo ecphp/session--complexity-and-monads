@@ -46,7 +46,7 @@
   commentstyle     = \color{gray},
   emph             =[1]{php,if,and,or,else,static,for,foreach,as,while,do,try,catch,finally,use,namespace,yield,yield from},
   emphstyle        =[1]\color{ecpink},
-  emph             =[2]{int, float, bool, string, array, Generator, iterable},
+  emph             =[2]{object, int, float, bool, string, array, Generator, iterable},
   emphstyle        =[2]\bfseries\color{dkblue},
   alsoletter       = {0,1,2,3,4,5,6,7,8,9},
   showstringspaces = false,
@@ -54,7 +54,8 @@
   extendedchars    = \true,
   inputencoding    = utf8,
   keepspaces       = true,
-  morekeywords     = {str_starts_with, new, true, false, catch, function, fn, return, null, catch, switch, if, while, do, else, elseif, case, break, instanceof, final, class, implements, static, public, protected, private, __construct, abstract, extends, parent, interface, void}
+  morekeywords     = {str_starts_with, new, true, false, catch, function, fn, return, null, catch, switch, if, while, do, else, elseif, case, break, instanceof, final, class, implements, static, public, protected, private, __construct, abstract, extends, parent, interface, void},
+  escapeinside     = ||
 }
 
 \input{version}
