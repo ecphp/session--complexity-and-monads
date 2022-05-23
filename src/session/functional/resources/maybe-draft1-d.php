@@ -4,7 +4,7 @@ $checkTitle = fn (string $t): ?string => str_starts_with('abc', strtolower($t))
     ? $t
     : null;|\pause|
 
-Maybe::of($repository->find($id)) |\pause|
+(new Maybe($repository->find($id))) |\pause|
     ->then($checkAuthor) |\pause|
     ->then($getTitle) |\pause|
     ->then($checkTitle) |\pause|

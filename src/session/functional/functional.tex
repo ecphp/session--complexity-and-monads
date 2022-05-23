@@ -75,7 +75,7 @@
 
     \begin{definition}[Partial function]
         \begin{align*}
-        & f: A \mapsto B\\
+        & f: A \rightharpoonup B\\
         & \exists x \in A \implies \not\exists f(x) \in B
         \end{align*}
     \end{definition}
@@ -101,12 +101,26 @@
 \end{frame}
 
 \begin{frame}
+    % TODO: Total functions are definitely less trouble makers than partials.
+    \frametitle{Functional code}
+    \framesubtitle{Tips and tricks}
+
+    \begin{itemize}
+        \item Total:\pause
+        \\\lstinline[language=PHP]!function add (int $a, int $b): int!
+        \pause
+        \item Partial:\pause
+        \\\lstinline[language=PHP]!function divide(int $a, int $b): float!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
     What\pause\ the\pause\ link\pause\ ????
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Handling errors}
 
     \lstinputlisting[caption={A Doctrine repository definition}]{src/session/functional/resources/doctrine-repository1-a.php}
     \pause
@@ -119,45 +133,108 @@
     \frametitle{Functional code}
     \framesubtitle{Tips and tricks}
 
-    \lstinputlisting[caption={Alternative A}]{src/session/functional/resources/square-root1-a.php}
+    \lstinputlisting[caption={Return null}]{src/session/functional/resources/square-root1-a.php}
     \pause
-    \lstinputlisting[caption={Alternative B}]{src/session/functional/resources/square-root1-b.php}
+    \lstinputlisting[caption={Throw exception}]{src/session/functional/resources/square-root1-b.php}
     \pause
-    \lstinputlisting[caption={Alternative C}]{src/session/functional/resources/square-root1-c.php}
+    \lstinputlisting[caption={Return sentinel}]{src/session/functional/resources/square-root1-c.php}
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
     \framesubtitle{Tips and tricks}
 
-    \begin{itemize}[<+->]
-        \item A: Mixing types implies more code for the end user.
-        \item B: Great power means great responsibility, has the power to stop the program!
-        \item C: Prone to incertitude when it returns 0.
+    \begin{itemize}
+        \item Return null?\pause
+            \\\textcolor{ecgrey!50}{Mixing types implies more code for the end
+            user, prevent composition.}
+        \item Throw exceptions?\pause
+            \\\textcolor{ecgrey!50}{Great power means great responsibility, has
+            the power to stop the program.}
+        \item Return sentinel?\pause
+            \\\textcolor{ecgrey!50}{Prone to incertitude when it returns 0.}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Return null?}
+    % TOSAY: Java, C implements nullable objects by default.
+    \begin{itemize}[<+->]
+        \item Universal error value that doesn't carry any relevant information
+            in case of issues.
+        \item Widespread, implemented in most languages but controversial
+        \item "the billion-dollar mistake"
+        \item Considered as a code smell
+        \item Prevent composition pattern
+    \end{itemize}
+    % TOSAY: Ce dernier point fait la liaison avec le slide suivant.
+\end{frame}
 
-    What is our best option?
+\begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{Throw exceptions?}
+    \begin{itemize}[<+->]
+        \item Indicate something unforeseen by the developer
+        \item Expensive, destructive
+        \item Definitely prevent composition pattern
+    \end{itemize}
+\end{frame}
 
-    \pause
+\begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{Return sentinel?}
+    \begin{itemize}[<+->]
+        \item Potentially prevent composition pattern
+        \item Must be carefully done, each type has its own unit type
+        \begin{itemize}[<+->]
+            \item \lstinline[language=PHP]!function divide(int $a, int $b): float|string!
+            \item \lstinline[language=PHP]!function divide(int $a, int $b): float|array!
+            \item \lstinline[language=PHP]!function divide(int $a, int $b): float|null!
+            \item \lstinline[language=PHP]!function divide(int $a, int $b): float|int!
+        \end{itemize}
+        \item In PHP, this is sadly happening
+        % Ask the audience in which PHP function this happens ? (strpos)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{What is our best option?}
 
     \begin{itemize}[<+->]
+        \item Not using PHP ?
         \item Avoid using strict types ?
         \item Wrap the incertitude in a well-know object?
-        \item Not using PHP ?
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    How about the idea of abstracting the incertitude by wrapping in a well-know
-    object?
+    \begin{figure}
+        \begin{overprint}
+        \onslide<1>
+            \begin{center}
+                \includegraphics[width=8em]{src/session/functional/resources/cat.png}
+            \end{center}
+        \onslide<2->
+            \begin{center}
+                \includegraphics[width=10em]{src/session/functional/resources/box.png}
+            \end{center}
+        \end{overprint}
+    \end{figure}
+
     \pause
+    \pause
+
+    How about the idea of abstracting the incertitude by creating an object that
+    would wrap a value in a well-know object?\\
+
+    \pause
+
+    \vspace{1em}
     An object that can be \textbf{maybe} null or \textbf{maybe} the expected
     value?
+    % TOSAY: Explain the maybe monad with the S'cat box.
 \end{frame}
 
 \begin{frame}
@@ -188,4 +265,28 @@
     \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-f.php}
     % Problem is still there, we have to write pure function and
     % avoid mixed types.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{The Maybe monad}
+
+    \begin{itemize}[<+->]
+        \item Focus on the happy scenario
+        \item Return null when something goes wrong
+        \item Unable to customize the value when something is wrong
+        \item Back to square 1.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    Maybe we could customize the return value in case of something wrong happen?\\
+    \vspace{1em}
+    \pause
+    While still being able to decide what to do when an error happen?
+\end{frame}
+
+\begin{frame}
+    \lstinputlisting[caption={Draft Either class}]{src/session/functional/resources/either-draft1-f.php}
 \end{frame}

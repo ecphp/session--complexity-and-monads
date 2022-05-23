@@ -1,11 +1,7 @@
 <?php
 
 final class Maybe {
-    private function __construct(private mixed $something) {}
-    |\pause|
-    public static function of(mixed $something): self {
-        return new self($something);
-    }
+    public function __construct(private mixed $something) {}
     |\pause|
     public function then(callable $f): self {
         if (null === $this->something) {
@@ -20,6 +16,6 @@ final class Maybe {
     }
 }
 |\pause|
-Maybe::of('a')->then('strtoupper')();|\pause| // A
+(new Maybe('a'))->then('strtoupper')();|\pause| // A
 |\pause|
-Maybe::of(null)->then('strtoupper')();|\pause| // null
+(new Maybe(null))->then('strtoupper')();|\pause| // null

@@ -1,14 +1,14 @@
-$checkAuthor = fn (object $e): Maybe => Maybe::of(
+$checkAuthor = fn (object $e): Maybe => new Maybe(
     (1 === $e->getAuthor()) ? $e : null
 );
 
-$getTitle = fn (object $e): Maybe => Maybe::of($e->getTitle());|\pause|
+$getTitle = fn (object $e): Maybe => new Maybe($e->getTitle());|\pause|
 
-$checkTitle = fn (string $t): Maybe => Maybe::of(
+$checkTitle = fn (string $t): Maybe => new Maybe(
     str_starts_with('abc', strtolower($t)) ? $t : null
 );
 
-Maybe::of($repository->find($id)) |\pause|
+(new Maybe($repository->find($id))) |\pause|
     ->then($checkAuthor) |\pause|
     ->then($getTitle) |\pause|
     ->then($checkTitle) |\pause|

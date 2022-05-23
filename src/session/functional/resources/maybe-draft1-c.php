@@ -1,4 +1,4 @@
-Maybe::of($repository->find($id)) |\pause|
+(new Maybe($repository->find($id))) |\pause|
     ->then(
         fn (object $e): ?object => (1 === $e->getAuthor()) ? $e : null
     ) |\pause|
