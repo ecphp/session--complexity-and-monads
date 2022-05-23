@@ -46,10 +46,17 @@
     \makebox[\linewidth]{\includegraphics[width=\paperwidth, height=\paperheight]{src/session/history/resources/oop.png}}
 \end{frame}
 
-\begin{frame}[fragile,c]
-    \frametitle{History}
-    \begin{figure}
-        \makebox[\textwidth]{\includegraphics[keepaspectratio=true, width=\paperwidth]{src/session/history/resources/venn.png}}
-    \end{figure}
-\end{frame}
+{
+    \usebackgroundtemplate{\includegraphics[keepaspectratio=true, width=\paperwidth, height=\paperheight]{src/session/history/resources/venn.png}}
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}
+    \end{frame}
+}
 
+\begin{frame}{My cool three points}
+    \begin{itemize}
+      \item<1-|alert@1> Point 1
+      \item<3-|alert@3> Point 2
+      \item<5-|alert@5> Point 3
+    \end{itemize}
+  \end{frame}
