@@ -7,17 +7,42 @@
     \framesubtitle{Complexity}
 
     \begin{itemize}[<+->]
-        \item In this presentation, we are going to dive into software development
+        \item What are we going to do?
+        \item A little bit of theory...
+        \item A little bit of code...
+        \item A lot of fun !
+    \end{itemize}
+
+    \note[item]{
+        In this presentation, we are going to dive into software development
         and try to understand why reading and writing code can sometimes be
         complex.
-        \item We are going to define what makes code difficult to understand and
+    }
+
+    \note[item]{
+        We are going to define what makes code difficult to understand and
         find where complexity comes from.
-        \item We are also going to give you tips and tricks to reduce code complexity.
-    \end{itemize}
+    }
+
+    \note[item]{
+        We are going to make a little bit PHP...
+    }
+
+    \note[item]{
+        We are also going to give you tips and tricks to reduce code complexity.
+    }
 \end{frame}
 
 \begin{frame}
-    What makes a code complex
+    \centering
+    \Huge What makes code complex
+    \note[item]{Thank the audience for being awake.}
+    \note[item]{
+        Note that the code examples in this presentation are mostly written in
+        PHP, but they could written in any languages. The things we are going to
+        see in this presentation is not bound and are things that could be
+        applied to almost any languages.
+    }
 \end{frame}
 
 \begin{frame}{Introduction}
@@ -33,10 +58,41 @@
         \item And the entity title starts with 'abc'
         \item Then it returns the entity title in uppercase
     \end{itemize}
+
+    \note[item]{
+        Let's start with a business example, written in Gherkin script.
+        Gherkin is a business readable metalanguage which helps you to
+        describe business behavior without going into the implementation
+        details. It uses plain langage to describe use cases and allows
+        users to remove logic details from behavior tests.
+    }
+
+    \note[item]{
+        Read the code...
+    }
 \end{frame}
 
 \begin{frame}[fragile,c]
     \lstinputlisting{src/session/introduction/resources/complexity-example.php}
+
+    \note[item]{
+        We are going to use the PHP language in this example and convert the
+        scenario into PHP...
+    }
+    \note[item]{
+        Read the code...
+    }
+    \note[item]{
+        As you can see here, this example code would be a semi-valid code that
+        would run in a Symfony application. I personnaly never encountered such
+        use case, but hey ! we are in a meeting, I had to find something for
+        you !
+    }
+    \note[item]{
+        I don't know what you think, but it is a bit hard to read and in order
+        to understand what is going on, we need to careful read and understand
+        each lines.
+    }
 \end{frame}
 
 \begin{frame}
@@ -48,6 +104,15 @@
         \item Is it the syntax of the language?
         \item Is it the amount of decision points?
     \end{itemize}
+
+    \note[item]{
+        I'm going to ask you some questions... Don't be afraid to say what you
+        have in mind. Don't forget that this code is an example and might not
+        reflect anything in the reality.
+    }
+    \note[item]{
+        Read the 3 questions...
+    }
 \end{frame}
 
 \begin{frame}
@@ -75,6 +140,35 @@
             \item If: 4
         \end{itemize}
     \end{itemize}
+
+    \note[item]{
+        So, is it the amount of language keywords? Let's make a comparison with
+        other languages. Can you guess how many keywords there are in PHP?
+    }
+    \note[item]{
+        Do you think the syntax, or the grammar of the language, in this case
+        PHP, makes it hard?
+    }
+    \note[item]{
+        Do you think that the amount of decision points or conditions makes it
+        harder to read?
+    }
+    \note[item]{
+        Actually, this is the last point that we are going to analyze together
+        today. The more decision points or conditions you have, the more your
+        code will be harder to understand, to maintain and to refactor.
+    }
+    \note[item]{
+        Before starting we are going to remember some notions of complexity.
+        Why? Because it's fun and fascinating.
+        Complexity is measured in Big $\mathcal{O}$ notation, which is a mathematical
+        notation that describes the limiting behavior of a function when the
+        argument tends towards a particular value or infinity, usually in the
+        worst case scenario.
+        In computer science, big $\mathcal{O}$ notation is used to classify algorithms
+        according to how their run time or space requirements grow as the input
+        size grows.
+    }
 \end{frame}
 
 \begin{frame}
@@ -101,6 +195,34 @@
             independent paths through a program's source code.
         \end{itemize}
     \end{itemize}
+
+    \note[item]{
+        There are 4 types of complexity, let's review them and guess which one
+        interest us most in our case.
+        Fear not and let's make the deep dive.
+    }
+    \note[item]{
+        The time complexity is the amount of time taken by an algorithm to run,
+        as a function of the input. It measures the time taken to execute each
+        statement of code in an algorithm. Note that the time to run is a
+        function of the length of the input and not the actual execution time of
+        the machine on which the algorithm is running on.
+        Examples:
+        - Finding the max value of an unsorted array of size n is $\mathcal{O}(n)$.
+            Why? Because you need to go through n elements at least once to
+            compare them.
+        - Finding duplicates values in an array of size n is $\mathcal{O}(n^2)$.
+            Why? Basically the naive implementation of the algorithm is a loop
+            in a loop, so the $n^2$.
+        - Sorting an array of size n with bubblesort is also $\mathcal{O}(n^2)$.
+            Why? Bubble sort has 2 nested for loops, why basically makes it
+            $n^2$.
+    }
+    \note[item]{
+        The space complexity of an algorithm quantifies the amount of space
+        taken by an algorithm to run as a function of the length of the input.
+    }
+
 \end{frame}
 
 \begin{frame}

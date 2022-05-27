@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 final class Controller {
     /**
-     * @Route /news/{id}
+     * @Route("/news/{id}")
      */
     public function __invoke(string $id): ?string {
         $entity = $this->repository->find($id);
