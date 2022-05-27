@@ -32,6 +32,11 @@ nix build -o session.pdf
 - http://rigaux.org/language-study/diagram.html
 - https://programminglanguages.info/influence-network/
 - https://exploring-data.com/vis/programming-languages-influence-network/
+- https://medium.com/att-israel/its-time-you-learn-about-monads-4ebe687e3ec7
+- https://adrianmejia.com/most-popular-algorithms-time-complexity-every-programmer-should-know-free-online-tutorial-course/
+- https://www.scaler.com/topics/data-structures/space-complexity-in-data-structure/
+
+
 
 [1]: https://github.com/loophp/DockLatex/
 [2]: https://www.latex-project.org/
