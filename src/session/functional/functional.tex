@@ -267,7 +267,6 @@
     % avoid mixed types.
 \end{frame}
 
-
 \begin{frame}
     \frametitle{Functional code}
     \framesubtitle{The Maybe monad}
@@ -289,4 +288,64 @@
 
 \begin{frame}
     \lstinputlisting[caption={Draft Either class}]{src/session/functional/resources/either-draft1-f.php}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge So these are monads !
+\end{frame}
+
+\begin{frame}[plain]
+    \centering
+    \vskip 0pt plus 1filll
+    \Huge Should I use monads ?
+    \vskip 0pt plus 1filll
+    \makebox[\linewidth]{\includegraphics[width=\paperwidth]{src/session/functional/resources/iceberg-top.png}}
+\end{frame}
+
+\begin{frame}[plain]
+    \makebox[\linewidth]{\includegraphics[width=\paperwidth]{src/session/functional/resources/iceberg-bottom.png}}
+    \centering
+    \vskip 0pt plus 1filll
+    \Large Technically, a monad is a monoid in the monoidal category of
+    endofunctors equipped with functor composition as its product.
+    \vskip 0pt plus 1filll
+\end{frame}
+
+% Silver lining
+\begin{frame}[plain]
+    \makebox[\linewidth]{\includegraphics[width=\paperwidth]{src/session/functional/resources/iceberg.png}}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item Maybe: Deal with a value and null
+        \item Either: Deal with a value and another value
+        \item ...Reader, Writer, IO, List,... There are many other monads these
+            two are just the tip of the iceberg.
+        \item Monads may have different names in languages (Optional, Result, Future, etc etc)
+        \item Monads are the design pattern of functional languages
+        \item Underlying theory can be very complex
+        \item 1988, Eugenio Moggi
+        \item We don't need to understand them to use them !
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge Should I use monads ?
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item Monads can abstract most of your function binding, turning a lot of
+            noise into magic.
+        \item It modularizes logical unit of computation and facilitate refactoring
+        \item Reduce complexity of the code, abstracting the logic into one well
+            known object that does only thing.
+        \item Either: Deal with a value and another value
+        \item For educational purposes ? Demystifing monads can help understand
+            the benefits and perks of functional programming, and make you a better
+            developer.
+    \end{itemize}
 \end{frame}
