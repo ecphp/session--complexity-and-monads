@@ -222,6 +222,20 @@
         The space complexity of an algorithm quantifies the amount of space
         taken by an algorithm to run as a function of the length of the input.
     }
+    \note[item]{
+        The Kolmogorov complexity is actually a very nice one. This complexity
+        is measured by the length of the shortest computer program that produces
+        the expected output. I'll explain a bit later in the next chapter with
+        an example.
+    }
+    \note[item]{
+        Next one, the Cyclomatic complexity measure the number of independent
+        paths through a program source code.
+    }
+    \note[item]{
+        In the next chapters we'll see which one impact us most at EC and how
+        we can improve, or in this case, reduce the complexity of our work.
+    }
 
 \end{frame}
 
@@ -238,4 +252,26 @@ and therefore, on the overall complexity of the application.
 \pause
 \vspace{\baselineskip}
 So today we are going to only focus on the \textbf{Cyclomatic complexity}.
+
+\note[item]{
+    Learning complexity of an algorithm is fun and enlightening, trust me! But
+    here in our case, we are usually not computing the time, space or Kolmogorov
+    complexities because we are not dealing with performance to the core. There
+    are usually no real use case at EC that justify to compute them.
+}
+
+\note[item]{
+    However, the Cyclomatic complexity of our code has an impact every day when
+    we need to make changes, and this is why we are going to focus on it today.
+}
+
+\note[item]{
+    I'm not going to give you an already made solution to the issue, but we are
+    going to see together how we can improve some situations.
+}
+
+\note[item]{
+    This presentation, as I might already said earlier, is not only bound to the
+    PHP language and could be applied to many other languages.
+}
 \end{frame}
