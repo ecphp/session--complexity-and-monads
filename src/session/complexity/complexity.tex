@@ -4,6 +4,22 @@
 
 \begin{frame}
     \frametitle{Complexity}
+    \framesubtitle{Complexity at a glance}
+
+    \begin{itemize}[<+->]
+        \item Used to compare algorithms efficiency,
+        \item Often calculated using the worst case scenario,
+        \item In big $\mathcal{O}$ notation: $\mathcal{O}(1)$, $\mathcal{O}(n)$, $\mathcal{O}(n \times log(n))$, $\mathcal{O}(n^2)$
+    \end{itemize}
+
+    \note[item]{
+        Lets start with the first one, this is usually the most classical one
+        when dealing with algorithms.
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complexity}
     \framesubtitle{Types}
 
     \begin{itemize}[<+->]
@@ -12,29 +28,54 @@
         \item Kolmogorov complexity
         \item Cyclomatic complexity
     \end{itemize}
+
+    \note[item]{
+        How about now diving into the marvellous world of algorithmic
+        complexity?
+        Worry not! We are just going to scratch the surface, nothing fancy
+        at all.
+    }
+    \note[item]{
+        We are going to "explore" 4 complexity types. Here they are.
+    }
+    \note[item]{
+        Lets start with the first one, this is usually the most classical one
+        when dealing with algorithms.
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Complexity}
-    \framesubtitle{Time complexity}
+    \framesubtitle{Constant time complexity: $\mathcal{O}(1)$}
     \lstinputlisting{src/session/complexity/resources/time-complexity-constant.php}
+
+    \note[item]{
+        Let's explain the time complexity with some examples...
+    }
+    \note[item]{
+        Here's the first one. Can you guess what this snippet is doing?
+    }
+    \note[item]{
+        Well, here's the solution. This snippet is returning the first item
+        of any type of iterable. If we had to measure its complexity, it would
+        be $\mathcal{O}(1)$
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Complexity}
-    \framesubtitle{Time complexity}
+    \framesubtitle{Linear time complexity: $\mathcal{O}(n)$}
     \lstinputlisting{src/session/complexity/resources/time-complexity-linear.php}
+    \note[item]{
+        Well, here's the solution. This snippet is returning the first item
+        of any type of iterable. If we had to measure its complexity, it would
+        be $\mathcal{O}(n)$
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Complexity}
-    \framesubtitle{Time complexity}
-    \lstinputlisting{src/session/complexity/resources/time-complexity-linear-alt.php}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Complexity}
-    \framesubtitle{Time complexity}
+    \framesubtitle{Exponential time complexity: $\mathcal{O}(n^2)$}
     \lstinputlisting{src/session/complexity/resources/time-complexity-exp.php}
 \end{frame}
 
@@ -56,12 +97,22 @@
     \frametitle{Complexity}
     \framesubtitle{Kolmogorov complexity}
 
-    Given the following outputs:
+    Let the following strings:
 
-    \begin{itemize}[<+->]
-        \item \texttt{1111111111111111111111111111111111111111}
-        \item \texttt{0a05a9e69e5757ac71c75a50418622624f042c97}
-    \end{itemize}
+    \pause
+
+    \begin{scriptsize}
+        \begin{itemize}[<+->]
+            \item \texttt{1111111111111111111111111111111111111111111111111111111111111111}
+            \item \texttt{317b773017df0ab62b15cd3f2ad17d7b13ab02f05f4943011ef8c4067d1ca0a5}
+        \end{itemize}
+    \end{scriptsize}
+
+    \pause[\thebeamerpauses]
+
+    \vfill
+
+    Which one has the smallest algorithm yielding those strings?
 \end{frame}
 
 \begin{frame}
@@ -75,17 +126,10 @@
     \frametitle{Complexity}
     \framesubtitle{Kolmogorov complexity}
 
-    \lstinputlisting{src/session/complexity/resources/kolmogorov-complexity-example2.php}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Complexity}
-    \framesubtitle{Kolmogorov complexity}
-
     The Kolmogorov complexity is the generalization of Shannon's theory of
     information.
     \\
-    It also has links to many other fields like with Gödel's incompleteness
+    It has links to many other fields like with Gödel's incompleteness
     theorem, Turing's halting problem, compression theory, ...
     \\
     \bigskip
