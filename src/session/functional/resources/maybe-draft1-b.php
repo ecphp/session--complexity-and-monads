@@ -10,7 +10,7 @@ final class Maybe {
             return $this;
         }
 
-        return self::of($f($this->value));
+        return new self($f($this->value));
     }
 }
 |\pause|
