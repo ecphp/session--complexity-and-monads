@@ -35,7 +35,7 @@ nix build -o session.pdf
 - https://medium.com/att-israel/its-time-you-learn-about-monads-4ebe687e3ec7
 - https://adrianmejia.com/most-popular-algorithms-time-complexity-every-programmer-should-know-free-online-tutorial-course/
 - https://www.scaler.com/topics/data-structures/space-complexity-in-data-structure/
-
+- https://nautil.us/kolmogorov-complexity-and-our-search-for-meaning-7549/
 
 
 [1]: https://github.com/loophp/DockLatex/
