@@ -425,22 +425,25 @@
     \frametitle{Complexity}
     \framesubtitle{Imperative programming}
 
-    Imperative programming tells the machine how to do something.
-
-    \pause
-
+    Imperative programming tells the machine how to do something.\pause
     (resulting in what you want to happen).
+
+    \note[item]{
+        Some examples: PHP, Java, C, Python...
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Complexity}
     \framesubtitle{Declarative programming}
 
-    Declarative programming tells the machine what you would like to happen.
-
-    \pause
-
+    Declarative programming tells the machine what you would like to happen.\pause
     (and the computer figures out how to do it)
+
+    \note[item]{
+        Some examples: Lambda calculus, Lisp, Scheme, Prolog, Erlang, SQL,
+        Ocaml, Haskell,...
+    }
 \end{frame}
 
 \begin{frame}
@@ -450,6 +453,11 @@
 \lstinputlisting[caption={Imperative programming}]{src/session/history/resources/oop.js}
 \pause
 \lstinputlisting[caption={Declarative programming}]{src/session/history/resources/fp.js}
+
+\note[item]{
+    Here's a snippet written in Javascript. First one in imperative programming,
+    second one is the same in declarative programming.
+}
 \end{frame}
 
 \begin{frame}
@@ -459,6 +467,11 @@
 \lstinputlisting[caption={Imperative programming}]{src/session/complexity/resources/imperative1.js}
 \pause
 \lstinputlisting[caption={Declarative programming}]{src/session/complexity/resources/declarative1.js}
+
+\note[item]{
+    Another example here.
+}
+
 \end{frame}
 
 \begin{frame}
@@ -478,6 +491,15 @@
     complexity of your application.\\
     \pause
     It is also less code to maintain and thus, less prone to bugs.
+
+    \note[item]{
+    Another way to get rid of complexity is to avoid the NIH syndrome... What is
+    this?
+
+    Basically it refers to the belief that ``in-house'' developments are better
+    suited, more secure, more controlled, quicker to develop and incur lower
+    overall costs than using existing implementations.
+    }
 \end{frame}
 
 \begin{frame}
@@ -485,12 +507,14 @@
     \framesubtitle{Confidence in other packages?}
 
     Relying on someone else's code means a lot, for some reason people prefer
-    redoing things on their own.\\
+    redoing things on their own.(NIH vs PFE)\\
     \pause
+    \vfill
     I believe that developers should be able to evaluate the trust into a
     package based on some key indicators.\\
     \pause
-    Tests, popularity, code lisibility, code extensibility, code practices...
+    \vfill
+    Tests, popularity, readability, extensibility, practices...
 \end{frame}
 
 \begin{frame}
@@ -501,7 +525,16 @@
     as possible so the developer using your code doesn't have any surprise when
     using your code in its own.\\
     \pause
+    \vfill
     Avoid mixing types, throw proper exceptions in case of issues, etc etc.\\
     \pause
+    \vfill
     Let's remind to the audience how to put those tips in practice.
+
+    \note[item]{
+        If we put ourselves in the shoes of a package maintainer, it is
+        important to ease the work of developers that are going to use our
+        package. We can ease that work by avoiding mixing types, throwing proper
+        exceptions, avoiding incertitude...
+    }
 \end{frame}
