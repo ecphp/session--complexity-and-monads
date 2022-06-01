@@ -5,4 +5,5 @@ class RealMultiply extends Multiply {
   }
 }
 
+var_dump((new RealMultiply) instanceof Multiply); // true
 (new RealMultiply)(6, 7); // ???

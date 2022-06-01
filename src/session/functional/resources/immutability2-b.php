@@ -5,5 +5,6 @@ class BetterPasswordValidator extends PasswordValidator {
   }
 }
 
+var_dump((new BetterPasswordValidator) instanceof PasswordValidator); // true
 (new BetterPasswordValidator)('/* hash */', 'hello'); // true
 (new BetterPasswordValidator)('/* hash */', 'admin'); // true
