@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace App;
 
-final class SpaceComplexity {
-
-    public function linear(): int {
-        $data = range(1,10);
-
+final class SpaceComplexity
+{
+    public function linear(iterable $input): int {
         $sum = 0;
 
-        foreach ($data as $int) {
-            $sum += $int;
+        foreach ($input as $item) {
+            $sum += $item;
         }
 
         return $sum;
