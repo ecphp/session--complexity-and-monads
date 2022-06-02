@@ -1,9 +1,3 @@
-<?php
-
-declare(strict_types=1);
-
-namespace App;
-
 final class TimeComplexity {
 
     public function exponential(iterable $matrix): int {

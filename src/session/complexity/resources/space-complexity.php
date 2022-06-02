@@ -1,9 +1,3 @@
-<?php
-
-declare(strict_types=1);
-
-namespace App;
-
 final class SpaceComplexity
 {
     public function linear(iterable $input): int {

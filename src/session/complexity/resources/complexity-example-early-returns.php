@@ -1,4 +1,3 @@
-<?php
 public function __invoke(string $id): ?string {
     $entity = $this->repository->find($id);
 
