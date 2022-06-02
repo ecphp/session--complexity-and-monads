@@ -69,8 +69,9 @@
 \end{frame}
 
 {
-    \usebackgroundtemplate{\includegraphics[keepaspectratio=true, width=\paperwidth, height=\paperheight]{src/session/history/resources/venn.png}}
-    \setbeamertemplate{navigation symbols}{}
+    \usebackgroundtemplate{
+        \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[keepaspectratio=true, width=\paperwidth, height=\paperheight]{src/session/history/resources/venn.png}\hfil}\vfil}
+    }
     \begin{frame}
 
     \note[item]{
