@@ -1,8 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
-final class Controller {
+final class NewsController {
     /**
      * @Route("/news/{id}")
      */
