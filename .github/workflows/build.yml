@@ -42,8 +42,8 @@ jobs:
 
       - name: Build document
         run: |
-          nix build -o presentation.pdf --quiet
-          cp presentation.pdf presentation.pdf
+          nix build -o session.pdf --quiet
+          cp session.pdf presentation.pdf
 
       - name: Upload build assets
         uses: actions/upload-artifact@v2
