@@ -173,17 +173,25 @@
 \end{frame}
 
 \begin{frame}
-    % TODO: Total functions are definitely less trouble makers than partials.
     \frametitle{Functional code}
     \framesubtitle{Partial and total functions}
 
     \begin{itemize}
-        \item Total:\pause
-        \\\lstinline[language=PHP]!function add (int $a, int $b): int!
-        \pause
-        \item Partial:\pause
-        \\\lstinline[language=PHP]!function divide(int $a, int $b): float!
+        \item Total: \lstinline[language=PHP]!function add (int $a, int $b): int!\pause
+        \item Partial: \lstinline[language=PHP]!function divide(int $a, int $b): float!\pause
+        \item Not pure: \lstinline[language=PHP]!time()!\pause
+        \item Pure: \lstinline[language=PHP]!function add (int $a, int $b): int!
     \end{itemize}
+
+    \note[item]{
+        A very basic example of total and partial function now to make sure
+        that the definition is well understood.
+    }
+    \note[item]{
+        Tips: when making functions, methods, try to make total functions
+        to reduce complexity later on.
+        Total functions are definitely less trouble makers than partials.
+    }
 \end{frame}
 
 \begin{frame}
@@ -201,7 +209,8 @@
         together.
     }
     \note[item]{
-        Let's keep that in mind an move on.
+        Please, let's keep all of that in mind an move on to more concrete
+        examples.
     }
 \end{frame}
 
@@ -220,6 +229,10 @@
         coming. Why ?
         Simply because of the use of the null value. If the method find would
         not return null, then this check is definitely useless.
+    }
+    \note[item]{
+        If we want to alter that behavior, then we need to rewrite some parts
+        from Doctrine, which we really want to avoid for now.
     }
     \note[item]{
         Let's use another example not involving Doctrine.
@@ -243,8 +256,8 @@
         options?
     }
     \note[item]{
-        The first option we have is to return the amazing null value when the
-        input value is a negative number.
+        The first option we have is to return the controversial null value when
+        the input value is a negative number.
     }
     \note[item]{
         The second option is to throw an exception and potentially stop the
