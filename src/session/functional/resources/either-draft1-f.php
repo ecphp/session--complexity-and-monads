@@ -2,7 +2,9 @@ $checkAuthor = fn (object $e): Either => (1 === $e->getAuthor())
     ? Either::right($e)
     : Either::left(new Exception('Invalid author'));|\pause|
 
-$getTitle    = fn (object $e): Either => Either::right($e->getTitle());|\pause|
+$getTitle    = fn (object $e): Either => (null === $title = $e->getTitle())
+    ? Either::left(new Exception('No title has been found'))
+    : Either::right($e->getTitle());|\pause|
 
 $checkTitle  = fn (string $t): Either => str_starts_with('abc', strtolower($t))
     ? Either::right($t)

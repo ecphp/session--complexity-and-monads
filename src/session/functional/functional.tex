@@ -45,34 +45,53 @@
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Final classes}
 
 \lstinputlisting[caption={Class is not final}]{src/session/functional/resources/immutability1-a.php}
 \pause
 \lstinputlisting[caption={When extending a class which is not final...}]{src/session/functional/resources/immutability1-b.php}
+\note[item]{
+    When extending a class, it's easy to change the original behavior of a
+    class. Sometimes, it's even possible to alter and completely change an
+    original behavior. I guess this is a wrong idea, don't you think?
+}
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Final classes}
 
 \lstinputlisting[caption={Class is not final}]{src/session/functional/resources/immutability2-a.php}
 \pause
 \lstinputlisting[caption={When extending a class which is not final...}]{src/session/functional/resources/immutability2-b.php}
+
+\note[item]{
+    Another example here, maybe a bit better.
+}
+\note[item]{
+    When a class is not final, developers may be prone to extend them and
+    introduce unwanted behaviors while keeping semantically the same thing.
+}
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Public and private properties}
 
 \lstinputlisting[caption={Public properties}]{src/session/functional/resources/properties1-a.php}
 \pause
 \lstinputlisting[caption={Private properties}]{src/session/functional/resources/properties1-b.php}
+
+\note[item]{
+    A quick reminder here, I hope you're not learning something new on this
+    slide!
+}
+
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Partial and total functions}
 
     A total function is a function which is defined for all inputs.
 
@@ -81,14 +100,27 @@
     \begin{definition}[Total function]
         \begin{align*}
         & f: A \mapsto B\\
-        & \forall a \in A \implies \exists f(a) \in B
+        & \forall a \in A \implies \exists\ f(a) \in B
         \end{align*}
     \end{definition}
+
+    \note[item]{
+        Here's a formal definition of a total function because sometimes a
+        smaller and formal definition worth ten thousands words.
+    }
+
+    \note[item]{
+        Let f a function which takes an input of type A and return a type B.
+    }
+    \note[item]{
+        For all a in type A implies that it exist the image of a through f in
+        type B.
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Partial and total functions}
 
     A partial function is a function which is not defined for all inputs.
 
@@ -97,14 +129,29 @@
     \begin{definition}[Partial function]
         \begin{align*}
         & f: A \rightharpoonup B\\
-        & \exists x \in A \implies \not\exists f(x) \in B
+        & \exists x \in A \implies \not\exists\ f(x) \in B
         \end{align*}
     \end{definition}
+
+    \note[item]{
+        And now, a formal definition of a partial function. This was a bit
+        more complex to find out and it might not be the best definition.
+        But hey, I'm just a developer!
+    }
+    \note[item]{
+        Let f a function which takes some input of type A and return a type B.
+        The word "some" is very important here, you can see that the arrow is
+        also a bit different.
+    }
+    \note[item]{
+        It exists x in type A implying that it does not exists an image of x
+        through f in type B.
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Partial and total functions}
 
     \begin{definition}[Total function]
         \begin{align*}
@@ -119,12 +166,16 @@
         & \exists x \in A \implies \not\exists f(x) \in B
         \end{align*}
     \end{definition}
+
+    \note[item]{
+        Just for the beauty of the definitions, here they are, both of them.
+    }
 \end{frame}
 
 \begin{frame}
     % TODO: Total functions are definitely less trouble makers than partials.
     \frametitle{Functional code}
-    \framesubtitle{Tips and tricks}
+    \framesubtitle{Partial and total functions}
 
     \begin{itemize}
         \item Total:\pause
@@ -297,6 +348,25 @@
     \note[item]{
         Take a break, let's make a summary of what we've seen (TODO)
     }
+
+    \note[item]{
+        AFAIK, there are no other options available. So, what is the best option
+        here?
+    }
+
+    \note[item]{
+        Well it depends.
+        IMHO, there is no better option, but rather the least worst.
+        In a way, all these options are breaking composition pattern so, they
+        are almost useless. What does it means?
+    }
+    \note[item]{
+        It means that you cannot stack functions calls one after the other.
+        Composition pattern will prevent you to break the logic flow and
+        checking the return value of the previous function before using it as
+        input of the next one.
+    }
+
     \note[item]{
         Start to slowly introduce the concept of monads using Schrodinger's cat.
     }
@@ -307,7 +377,7 @@
         \begin{overprint}
         \onslide<1>
             \begin{center}
-                \includegraphics[width=8em]{src/session/functional/resources/cat.png}
+                \includegraphics[width=10em]{src/session/functional/resources/cat.png}
             \end{center}
         \onslide<2->
             \begin{center}
@@ -316,109 +386,263 @@
         \end{overprint}
     \end{figure}
 
-    \pause
-    \pause
 
-    How about the idea of abstracting the incertitude by creating an object that
-    would wrap a value in a well-know object?\\
-
-    \pause
-
-    \vspace{1em}
-    An object that can be \textbf{maybe} null or \textbf{maybe} the expected
-    value?
+    \note[item]{
+        Let's make a mind experience now.
+    }
+    \note[item]{
+        Do you know this famous cat? Yes, this is the Tomcat logo.
+    }
+    \note[item]{
+        Next to the cat, there is a barrel of toxic waste. The cat could die if
+        it were to play with the barrel and breathe in the toxic gases.
+    }
+    \note[item]{
+        Now, let's put them in a sealed box.
+    }
+    \note[item]{
+        After a couple of minutes, are you able to tell if the cat is alive or
+        not?
+    }
+    \note[item]{
+        The only way to tell if the cat is alive is to open the box, right?
+        But maybe opening the box will cause the cat to die?
+    }
+    \note[item]{
+        At this point, there is no way to tell if the cat is alive or not.
+        The cat is dead and alive at the same time. This is the Schrodinger's
+        cat.
+    }
+    \note[item]{
+        What we're going to see next is basically the same thing.
+    }
+    \note[item]{
+        How about the idea of abstracting the incertitude by creating an object
+        that would wrap a value in a well-know object?
+    }
+    \note[item]{
+        An object that can be \textbf{maybe} null or \textbf{maybe} the expected
+        value... just like the Schrodinger's cat?
+    }
+    \note[item]{
+        Let's make together this first object in PHP. This is where there will
+        be a bit of code. Please stay focused.
+    }
 \end{frame}
 
 \begin{frame}
-    \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-a.php}
+    \lstinputlisting[caption={Maybe class directions}]{src/session/functional/resources/maybe-draft1-a.php}
 \end{frame}
 
 \begin{frame}
-    \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-b.php}
+    \lstinputlisting[caption={Maybe class implementation and usage}]{src/session/functional/resources/maybe-draft1-b.php}
 \end{frame}
 
 \begin{frame}
-    \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-c.php}
+    \lstinputlisting[caption={Maybe class with our snippet}]{src/session/functional/resources/maybe-draft1-c.php}
 \end{frame}
 
 \begin{frame}
-    \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-d.php}
-    % Problem is still there, we have to write pure function and
-    % avoid mixed types.
+    \lstinputlisting[caption={Maybe class with our snippet and callbacks}]{src/session/functional/resources/maybe-draft1-d.php}
+    \note[item]{
+        All of this is cool, but problem is still there.
+    }
+    \note[item]{
+        Do you see it?
+    }
+    \note[item]{
+        We are still writing partial functions and mixing types, we are back to
+        square one.
+    }
 \end{frame}
 
 \begin{frame}
     \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-e.php}
-    % Problem is still there, we have to write pure function and
-    % avoid mixed types.
+
+    \note[item]{
+        We could fix this issue by just updating the "then" method as such...
+    }
+    \note[item]{
+        In the previous version, we were wrapping the result of the method call
+        in a new object, let's get rid of that and update our callbacks
+        accordingly.
+    }
 \end{frame}
 
 \begin{frame}
     \lstinputlisting[caption={Draft Maybe class}]{src/session/functional/resources/maybe-draft1-f.php}
-    % Problem is still there, we have to write pure function and
-    % avoid mixed types.
+
+    \note[item]{
+        It's a bit more verbose for sure, but now all the callbacks are total
+        functions!
+    }
+    \note[item]{
+        As you can see, this is already nice, our snippet is a bit easier to
+        read and to modify.
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Functional code}
-    \framesubtitle{The Maybe monad}
+    \framesubtitle{The Maybe class}
 
     \begin{itemize}[<+->]
-        \item Focus on the happy scenario
-        \item Return null when something goes wrong
-        \item Unable to customize the value when something is wrong
+        \item Is actually the ``Maybe'' monad,
+        \item Focus on the happy scenario,
+        \item Return \texttt{null} when something goes wrong,
+        \item Unable to know the reason when something is wrong,
         \item Back to square 1.
     \end{itemize}
+
+    \note[item]{
+        Let's summarize a bit what we've seen here.
+    }
+    \note[item]{
+        While using the maybe monad could be useful is some cases it might not
+        be the best choice if you need to know why something has failed.
+    }
 \end{frame}
 
 \begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{The Maybe class}
+
     Maybe we could customize the return value in case of something wrong happen?\\
-    \vspace{1em}
+    \vfill
     \pause
     While still being able to decide what to do when an error happen?
+    \vfill
+    \pause
+    \begin{flushright}
+    Let's hack !
+    \end{flushright}
 \end{frame}
 
 \begin{frame}
-    \lstinputlisting[caption={Draft Either class}]{src/session/functional/resources/either-draft1-f.php}
+    \lstinputlisting[caption={Either class direction}]{src/session/functional/resources/either-draft1-a.php}
+
+    \note[item]{
+        Let's update the maybe class and add the necessary changes.
+    }
 \end{frame}
 
 \begin{frame}
-    \centering
-    \Huge So these are monads !
+    \lstinputlisting[caption={Either class usage}]{src/session/functional/resources/either-draft1-f.php}
+
+    \note[item]{
+        You may notice that the callbacks are total, nothing has changed except
+        that we replaced the return types and added a "left" case when something
+        wrong happen.
+    }
+    \note[item]{
+        There is also a difference during the last method call at the end,
+        the developer needs to submit a callback that will eventually deal with
+        the potential exception.
+    }
+    \note[item]{
+        If there is no exception, then the Either class will return the expected
+        value, if not, it will execute the callback and pass the exception to it
+        It's up the developer to do whatever he wants with the exception.
+    }
 \end{frame}
 
+{
+\setbeamercolor{background canvas}{bg=IcebergSky}
 \begin{frame}[plain]
     \centering
     \vskip 0pt plus 1filll
-    \Huge Should I use monads ?
+    \Huge So these are monads !
     \vskip 0pt plus 1filll
     \makebox[\linewidth]{\includegraphics[width=\paperwidth]{src/session/functional/resources/iceberg-top.png}}
-\end{frame}
 
+    \note[item]{
+        We are at the end of the presentation finally !
+    }
+    \note[item]{
+        As you can see, I just introduced monads at the end of the slides
+        because I think it is important to know a bit of context and history on
+        where they come from in order to know how and where to use them.
+    }
+    \note[item]{
+        What you see down there is a top of an iceberg, this is exactly what we
+        did today. We just scratched the surface of this world. We discovered
+        the two first monads Maybe and Either.
+    }
+    \note[item]{
+        There's a lot to learn and discover, but it is not the intention of this
+        presentation today. The idea here was to open some doors and introduce
+        the concept, nothing else, nothing more.
+    }
+\end{frame}
+}
+
+{
+\setbeamercolor{background canvas}{bg=IcebergDeepBlue}
 \begin{frame}[plain]
     \makebox[\linewidth]{\includegraphics[width=\paperwidth]{src/session/functional/resources/iceberg-bottom.png}}
     \centering
     \vskip 0pt plus 1filll
-    \Large Technically, a monad is a monoid in the monoidal category of
-    endofunctors equipped with functor composition as its product.
+    \Large
+    \begin{itquote}
+        Technically, a monad is a monoid in the monoidal category of
+        endofunctors equipped with functor composition as its product.
+    \end{itquote}
     \vskip 0pt plus 1filll
-\end{frame}
 
-% Silver lining
-\begin{frame}[plain]
-    \makebox[\linewidth]{\includegraphics[width=\paperwidth]{src/session/functional/resources/iceberg.png}}
+    \note[item]{
+        This is what you might encounter when going further with monads.
+    }
+    \note[item]{
+        The theory behind monads are from the Category theory which is
+        completely out of this World.
+    }
+\end{frame}
+}
+
+\begin{frame}
+    \centering
+    \Huge Should I use monads ?
+
+    \note[item]{
+        Depends on the language you're using, you might be already using them.
+        In Java, you can use them through the Optional class, in Javascript with
+        Promises, in PHP with... Argh !
+        There is actually no ``official'' monad package and PHP developers are
+        not used to program this way. However, there is a very good userland
+        implementation: Lamphpda from Marco Perone.
+    }
 \end{frame}
 
 \begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{State of PHP and monads}
+
+    \begin{itemize}[<+->]
+        \item No core implementation
+        \item Only ``userland'' implementations
+        \item Prone to static analysis
+        \item Implementations:
+            \begin{itemize}[<+->]
+                \item \href{https://github.com/marcosh/lamphpda}{github.com/marcosh/lamphpda}
+                \item \href{https://github.com/loophp/repository-monadic-helper/}{github.com/loophp/repository-monadic-helper/}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{Monads summary}
+
     \begin{itemize}
+        \item Introduced in 1988 by Eugenio Moggi
         \item Maybe: Deal with a value and null
         \item Either: Deal with a value and another value
+            Maybe is to some extent a specialization of Either.
         \item ...Reader, Writer, IO, List,... There are many other monads these
             two are just the tip of the iceberg.
-        \item Monads may have different names in languages (Optional, Result, Future, etc etc)
+        \item Monads may have different names in languages (Optional, Result, Promise, etc etc)
         \item Monads are the design pattern of functional languages
         \item Underlying theory can be very complex
-        \item 1988, Eugenio Moggi
         \item We don't need to understand them to use them !
     \end{itemize}
 \end{frame}
@@ -429,6 +653,9 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{Monads benefits}
+
     \begin{itemize}
         \item Monads can abstract most of your function binding, turning a lot of
             noise into magic.
@@ -440,4 +667,9 @@
             the benefits and perks of functional programming, and make you a better
             developer.
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge Thank you all for listening!
 \end{frame}
