@@ -43,4 +43,4 @@ repository:
     has_projects: false
     has_wiki: false
     name: session--complexity-and-monads
-    private: false
+    private: true
