@@ -18,16 +18,9 @@ rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 %:
 	$(MAKE) build INPUT=src/$@/index.tex
 
-build : asset
+build :
 	$(LATEXMK_COMMAND) -jobname=$(OUTPUT) $(INPUT)
 	$(MAKE) chmodbuild
-
-asset :
-	rm -rf src/session/resources/*.png
-	$(PLANTUML_RUN) -tpng src/session/resources/*.plantuml
-
-plantuml :
-	$(PLANTUML_RUN) -tpng src/session/resources/*.plantuml
 
 pandoc :
 	$(PANDOC_RUN) -s $(INPUT) -o $(OUTPUT)
