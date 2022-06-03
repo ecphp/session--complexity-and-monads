@@ -1,281 +1,281 @@
 \begin{sepframe}{Introduction}
-    {}
+  {}
 \end{sepframe}
 
 \begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{Menu}
+  \frametitle{Introduction}
+  \framesubtitle{Menu}
 
-    \begin{itemize}[<+->]
-        \item A little bit of theory...
-        \item A little bit of code...
-        \item A lot of fun !
-    \end{itemize}
+  \begin{itemize}[<+->]
+    \item A little bit of theory...
+    \item A little bit of code...
+    \item A lot of fun !
+  \end{itemize}
 
-    \note[item]{
-        In the last presentation we made, a lot of people expressed their will
-        to have a presentation about monads through a live poll, do you
-        remember? Here we are, this is your Santa Claus gift much in advance.
-    }
+  \note[item]{
+    In the last presentation we made, a lot of people expressed their will
+    to have a presentation about monads through a live poll, do you
+    remember? Here we are, this is your Santa Claus gift much in advance.
+  }
 
-    \note[item]{
-        In this presentation, we are going to dive into software development
-        and try to understand why reading and writing code can sometimes be
-        complex.
-    }
+  \note[item]{
+    In this presentation, we are going to dive into software development
+    and try to understand why reading and writing code can sometimes be
+    complex.
+  }
 
-    \note[item]{
-        We are going to define what makes code difficult to understand and
-        find where complexity comes from.
-    }
+  \note[item]{
+    We are going to define what makes code difficult to understand and
+    find where complexity comes from.
+  }
 
-    \note[item]{
-        We are going to make a little bit PHP...
-    }
+  \note[item]{
+    We are going to make a little bit PHP...
+  }
 
-    \note[item]{
-        We are also going to give you tips and tricks to reduce code complexity.
-    }
+  \note[item]{
+    We are also going to give you tips and tricks to reduce code complexity.
+  }
 \end{frame}
 
 \begin{frame}
-    \centering
-    \Huge What makes code complex
-    \note[item]{Thank the audience for being awake.}
-    \note[item]{
-        Note that the code examples in this presentation are mostly written in
-        PHP, but they could written in any languages. The things we are going to
-        see in this presentation is not bound and are things that could be
-        applied to almost any languages.
-    }
+  \centering
+  \Huge What makes code complex
+  \note[item]{Thank the audience for being awake.}
+  \note[item]{
+    Note that the code examples in this presentation are mostly written in
+    PHP, but they could written in any languages. The things we are going to
+    see in this presentation is not bound and are things that could be
+    applied to almost any languages.
+  }
 \end{frame}
 
 \begin{frame}{Introduction}
-    \frametitle{What makes code complex}
+  \frametitle{What makes code complex}
 
-    \begin{itemize}[<+->]
-        \item Given an anonymous user
-        \item When I reach the page /something/<any-number>
-        \item Then it finds the entity with id <any-number>
-        \item And the entity author ID is 1
-        \item And the entity title is not empty
-        \item And the entity title starts with 'abc'
-        \item Then it returns the entity title in uppercase
-    \end{itemize}
+  \begin{itemize}[<+->]
+    \item Given an anonymous user
+    \item When I reach the page /something/<any-number>
+    \item Then it finds the entity with id <any-number>
+    \item And the entity author ID is 1
+    \item And the entity title is not empty
+    \item And the entity title starts with 'abc'
+    \item Then it returns the entity title in uppercase
+  \end{itemize}
 
-    \note[item]{
-        Let's start with a business example, written in Gherkin script.
-        Gherkin is a business readable metalanguage which helps you to
-        describe business behavior without going into the implementation
-        details. It uses plain langage to describe use cases and allows
-        users to remove logic details from behavior tests.
-    }
+  \note[item]{
+    Let's start with a business example, written in Gherkin script.
+    Gherkin is a business readable metalanguage which helps you to
+    describe business behavior without going into the implementation
+    details. It uses plain langage to describe use cases and allows
+    users to remove logic details from behavior tests.
+  }
 
-    \note[item]{
-        Read the code...
-    }
+  \note[item]{
+    Read the code...
+  }
 \end{frame}
 
 \begin{frame}[fragile,c]
-    \lstinputlisting{src/session/introduction/resources/complexity-example.php}
+  \lstinputlisting{src/session/introduction/resources/complexity-example.php}
 
-    \note[item]{
-        We are going to use the PHP language in this example and convert the
-        scenario into PHP...
-    }
-    \note[item]{
-        Read the code...
-    }
-    \note[item]{
-        As you can see here, this example code would be a semi-valid code that
-        would run in a Symfony application. I personnaly never encountered such
-        use case, but hey ! we are in a meeting, I had to find something for
-        you !
-    }
-    \note[item]{
-        I don't know what you think, but it is a bit hard to read and in order
-        to understand what is going on, we need to careful read and understand
-        each lines.
-    }
+  \note[item]{
+    We are going to use the PHP language in this example and convert the
+    scenario into PHP...
+  }
+  \note[item]{
+    Read the code...
+  }
+  \note[item]{
+    As you can see here, this example code would be a semi-valid code that
+    would run in a Symfony application. I personnaly never encountered such
+    use case, but hey ! we are in a meeting, I had to find something for
+    you !
+  }
+  \note[item]{
+    I don't know what you think, but it is a bit hard to read and in order
+    to understand what is going on, we need to careful read and understand
+    each lines.
+  }
 \end{frame}
 
 \begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{What makes code complex}
+  \frametitle{Introduction}
+  \framesubtitle{What makes code complex}
 
-    \begin{itemize}[<+->]
-        \item Is it the amount of language keywords?
-        \item Is it the syntax of the language?
-        \item Is it the amount of decision points?
-    \end{itemize}
+  \begin{itemize}[<+->]
+    \item Is it the amount of language keywords?
+    \item Is it the syntax of the language?
+    \item Is it the amount of decision points?
+  \end{itemize}
 
-    \note[item]{
-        I'm going to ask you some questions... Don't be afraid to say what you
-        have in mind. Don't forget that this code is an example and might not
-        reflect anything in the reality.
-    }
-    \note[item]{
-        Read the 3 questions...
-    }
+  \note[item]{
+    I'm going to ask you some questions... Don't be afraid to say what you
+    have in mind. Don't forget that this code is an example and might not
+    reflect anything in the reality.
+  }
+  \note[item]{
+    Read the 3 questions...
+  }
 \end{frame}
 
 \begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{What makes code complex}
+  \frametitle{Introduction}
+  \framesubtitle{What makes code complex}
 
-    \begin{itemize}[<+->]
-        \item Is it the amount of language keywords?
-        \begin{itemize}
+  \begin{itemize}[<+->]
+    \item Is it the amount of language keywords?
+          \begin{itemize}
             \item Smalltalk: \textpm 6
             \item C: 32
             \item Haskell: 55
             \item Javascript: \textpm 64
             \item F\#: 103
             \item PHP: \textpm 67
-        \end{itemize}
-        \item Is it the syntax of the language?
-        \begin{itemize}
+          \end{itemize}
+    \item Is it the syntax of the language?
+          \begin{itemize}
             \item Parenthesis
             \item Semicolon
             \item Indentation
-        \end{itemize}
-        \item Is it the amount of decision points?
-        \begin{itemize}
+          \end{itemize}
+    \item Is it the amount of decision points?
+          \begin{itemize}
             \item If: 4
-        \end{itemize}
-    \end{itemize}
+          \end{itemize}
+  \end{itemize}
 
-    \note[item]{
-        So, is it the amount of language keywords? Let's make a comparison with
-        other languages. Can you guess how many keywords there are in PHP?
-    }
-    \note[item]{
-        Do you think the syntax, or the grammar of the language, in this case
-        PHP, makes it hard?
-    }
-    \note[item]{
-        Do you think that the amount of decision points or conditions makes it
-        harder to read?
-    }
-    \note[item]{
-        Actually, this is the last point that we are going to analyze together
-        today. The more decision points or conditions you have, the more your
-        code will be harder to understand, to maintain and to refactor.
-    }
-    \note[item]{
-        Before starting we are going to remember some notions of complexity.
-        Why? Because it's fun and fascinating.
-        Complexity is measured in Big $\mathcal{O}$ notation, which is a mathematical
-        notation that describes the limiting behavior of a function when the
-        argument tends towards a particular value or infinity, usually in the
-        worst case scenario.
-        In computer science, big $\mathcal{O}$ notation is used to classify algorithms
-        according to how their run time or space requirements grow as the input
-        size grows.
-    }
+  \note[item]{
+    So, is it the amount of language keywords? Let's make a comparison with
+    other languages. Can you guess how many keywords there are in PHP?
+  }
+  \note[item]{
+    Do you think the syntax, or the grammar of the language, in this case
+    PHP, makes it hard?
+  }
+  \note[item]{
+    Do you think that the amount of decision points or conditions makes it
+    harder to read?
+  }
+  \note[item]{
+    Actually, this is the last point that we are going to analyze together
+    today. The more decision points or conditions you have, the more your
+    code will be harder to understand, to maintain and to refactor.
+  }
+  \note[item]{
+    Before starting we are going to remember some notions of complexity.
+    Why? Because it's fun and fascinating.
+    Complexity is measured in Big $\mathcal{O}$ notation, which is a mathematical
+    notation that describes the limiting behavior of a function when the
+    argument tends towards a particular value or infinity, usually in the
+    worst case scenario.
+    In computer science, big $\mathcal{O}$ notation is used to classify algorithms
+    according to how their run time or space requirements grow as the input
+    size grows.
+  }
 \end{frame}
 
 \begin{frame}
-    \frametitle{Introduction}
-    \framesubtitle{Complexity types}
+  \frametitle{Introduction}
+  \framesubtitle{Complexity types}
 
-    \begin{itemize}[<+->]
-        \item Time complexity
-        \begin{itemize}
+  \begin{itemize}[<+->]
+    \item Time complexity
+          \begin{itemize}
             \item The amount of elementary operations
-        \end{itemize}
-        \item Space complexity
-        \begin{itemize}
+          \end{itemize}
+    \item Space complexity
+          \begin{itemize}
             \item The amount of memory a program is using.
-        \end{itemize}
-        \item Kolmogorov complexity
-        \begin{itemize}
+          \end{itemize}
+    \item Kolmogorov complexity
+          \begin{itemize}
             \item Given an output, this is the length of a shortest computer
-            program that produces the output.
-        \end{itemize}
-        \item Cyclomatic complexity
-        \begin{itemize}
+                  program that produces the output.
+          \end{itemize}
+    \item Cyclomatic complexity
+          \begin{itemize}
             \item The quantitative measure of the number of linearly
-            independent paths through a program's source code.
-        \end{itemize}
-    \end{itemize}
+                  independent paths through a program's source code.
+          \end{itemize}
+  \end{itemize}
 
-    \note[item]{
-        There are 4 types of complexity, let's review them and guess which one
-        interest us most in our case.
-        Fear not and let's make the deep dive.
-    }
-    \note[item]{
-        The time complexity is the amount of time taken by an algorithm to run,
-        as a function of the input. It measures the time taken to execute each
-        statement of code in an algorithm. Note that the time to run is a
-        function of the length of the input and not the actual execution time of
-        the machine on which the algorithm is running on.
-        Examples:
-        - Finding the max value of an unsorted array of size n is $\mathcal{O}(n)$.
-            Why? Because you need to go through n elements at least once to
-            compare them.
-        - Finding duplicates values in an array of size n is $\mathcal{O}(n^2)$.
-            Why? Basically the naive implementation of the algorithm is a loop
-            in a loop, so the $n^2$.
-        - Sorting an array of size n with bubblesort is also $\mathcal{O}(n^2)$.
-            Why? Bubble sort has 2 nested for loops, why basically makes it
-            $n^2$.
-    }
-    \note[item]{
-        The space complexity of an algorithm quantifies the amount of space
-        taken by an algorithm to run as a function of the length of the input.
-    }
-    \note[item]{
-        The Kolmogorov complexity is actually a very nice one. This complexity
-        is measured by the length of the shortest computer program that produces
-        the expected output. I'll explain a bit later in the next chapter with
-        an example.
-    }
-    \note[item]{
-        Next one, the Cyclomatic complexity measure the number of independent
-        paths through a program source code.
-    }
-    \note[item]{
-        In the next chapters we'll see which one impact us most at EC and how
-        we can improve, or in this case, reduce the complexity of our work.
-    }
+  \note[item]{
+    There are 4 types of complexity, let's review them and guess which one
+    interest us most in our case.
+    Fear not and let's make the deep dive.
+  }
+  \note[item]{
+    The time complexity is the amount of time taken by an algorithm to run,
+    as a function of the input. It measures the time taken to execute each
+    statement of code in an algorithm. Note that the time to run is a
+    function of the length of the input and not the actual execution time of
+    the machine on which the algorithm is running on.
+    Examples:
+    - Finding the max value of an unsorted array of size n is $\mathcal{O}(n)$.
+    Why? Because you need to go through n elements at least once to
+    compare them.
+    - Finding duplicates values in an array of size n is $\mathcal{O}(n^2)$.
+    Why? Basically the naive implementation of the algorithm is a loop
+    in a loop, so the $n^2$.
+    - Sorting an array of size n with bubblesort is also $\mathcal{O}(n^2)$.
+    Why? Bubble sort has 2 nested for loops, why basically makes it
+    $n^2$.
+  }
+  \note[item]{
+    The space complexity of an algorithm quantifies the amount of space
+    taken by an algorithm to run as a function of the length of the input.
+  }
+  \note[item]{
+    The Kolmogorov complexity is actually a very nice one. This complexity
+    is measured by the length of the shortest computer program that produces
+    the expected output. I'll explain a bit later in the next chapter with
+    an example.
+  }
+  \note[item]{
+    Next one, the Cyclomatic complexity measure the number of independent
+    paths through a program source code.
+  }
+  \note[item]{
+    In the next chapters we'll see which one impact us most at EC and how
+    we can improve, or in this case, reduce the complexity of our work.
+  }
 
 \end{frame}
 
 \begin{frame}
-When building an application using a framework, most the tools are already
-available and only the business logic needs to be implemented. Adding the
-business logic is usually what introduces most of the complexity.
-\\
-\pause
-\vspace{\baselineskip}
-The design of these tools have a great impact on how the end user will use them
-and therefore, on the overall complexity of the application.
-\\
-\pause
-\vspace{\baselineskip}
-So today we are going to only focus on the \textbf{Cyclomatic complexity}.
+  When building an application using a framework, most the tools are already
+  available and only the business logic needs to be implemented. Adding the
+  business logic is usually what introduces most of the complexity.
+  \\
+  \pause
+  \vspace{\baselineskip}
+  The design of these tools have a great impact on how the end user will use them
+  and therefore, on the overall complexity of the application.
+  \\
+  \pause
+  \vspace{\baselineskip}
+  So today we are going to only focus on the \textbf{Cyclomatic complexity}.
 
-\note[item]{
+  \note[item]{
     Learning complexity of an algorithm is fun and enlightening, trust me! But
     here in our case, we are usually not computing the time, space or Kolmogorov
     complexities because we are not dealing with performance to the core. There
     are usually no real use case at EC that justify to compute them.
-}
+  }
 
-\note[item]{
+  \note[item]{
     However, the Cyclomatic complexity of our code has an impact every day when
     we need to make changes, and this is why we are going to focus on it today.
-}
+  }
 
-\note[item]{
+  \note[item]{
     I'm not going to give you an already made solution to the issue, but we are
     going to see together how we can improve some situations.
-}
+  }
 
-\note[item]{
+  \note[item]{
     This presentation, as I might already said earlier, is not only bound to the
     PHP language and could be applied to many other languages.
-}
+  }
 \end{frame}
