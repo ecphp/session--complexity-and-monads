@@ -32,9 +32,9 @@ clean :
 	rm -rf build
 
 lint :
-	$(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), lacheck $(file);)
-	$(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), chktex $(file);)
-	$(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), latexindent $(file);)
+	# $(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), lacheck $(file);)
+	# $(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), chktex $(file);)
+	$(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), latexindent -l -w $(file);)
 
 chmodbuild:
 	$(TEXLIVE_RUN) chmod 777 build
