@@ -8,7 +8,7 @@
 
   \begin{itemize}[<+->]
     \item Used to compare algorithms efficiency,
-    \item Often calculated using the worst case scenario (usually \textit{when the input grow infinitely})
+    \item Often calculated using the worst case scenario
     \item In ``Big $\mathcal{O}$'' notation: $\mathcal{O}(1)$, $\mathcal{O}(n)$, $\mathcal{O}(n \times log(n))$, $\mathcal{O}(n^2)$
   \end{itemize}
 
@@ -17,7 +17,11 @@
   }
 
   \note[item]{
-    Read the bullet points
+    Read the bullet points...
+  }
+
+  \note[item]{
+    Complexity is usually computed when the input grow infinitely.
   }
 \end{frame}
 
@@ -107,7 +111,7 @@
   \lstinputlisting{src/session/complexity/resources/space-complexity.php}
 
   \note[item]{
-    Let's no focus on the algorithm here. We see that a variable \$data is
+    Let's not focus on the algorithm here. We see that a variable \$data is
     is an array of n elements. We also see that the variable \$sum holds
     one element. Therefore the complexity if $\mathcal{O}(n + 1)$, and then
     when n goes up to infinity, $\mathcal{O}(n)$.
@@ -122,9 +126,14 @@
   expected output.
 
   \note[item]{
-    The Kolmogorov complexity, besides its funny name, is something not so
-    common in our day to day development.
+    The Kolmogorov complexityis something not so common in our day to day
+    development.
   }
+  \note[item]{
+    Discovered first by Ray Solomonoff and then independently by Andrey
+    Kolmogorov around 1965.
+  }
+
   \note[item]{
     I wanted to talk about it because I want to show that there are different
     types of complexity but also this might be something you already
@@ -132,6 +141,9 @@
   }
   \note[item]{
     I'm going to explain it by showing an example here under.
+  }
+  \note[item]{
+
   }
 \end{frame}
 
@@ -159,6 +171,9 @@
     moment. Which one of these strings would be faster and easier to
     describe to your friend so he can write it down?
   }
+  \note[item]{
+    Let's see if we had to write an algorithm...
+  }
 \end{frame}
 
 \begin{frame}
@@ -166,6 +181,17 @@
   \framesubtitle{Kolmogorov complexity}
 
   \lstinputlisting{src/session/complexity/resources/kolmogorov-complexity-example1.php}
+
+  \note[item]{
+    Here's an algorithm for the first string...
+  }
+  \note[item]{
+    Here's an algorithm for the second string... do you have something better?
+  }
+  \note[item]{
+    We can see that converting that string into an algorithm is very difficult
+    because we don't see any recuring pattern.
+  }
 \end{frame}
 
 \begin{frame}[fragile,c]
@@ -173,6 +199,21 @@
   \framesubtitle{Kolmogorov complexity}
 
   \makebox[\linewidth]{\includegraphics[height=.70\paperheight]{src/session/complexity/resources/Screenshot_20220601_090230.png}}
+
+  \note[item]{
+    To illustrate this, you see here something I did on my computer.
+    I created 2 files (1 and r), containing 640 characters, full of ones and the
+    second one, a completely random string.
+  }
+
+  \note[item]{
+    Then I zip those files and compare their sizes...
+  }
+  \note[item]{
+    I'm showing you this example because the Kolmogorov complexity is actually
+    linked to many theories like Shannon's theory of information, compression
+    algorithms, and many others.
+  }
 \end{frame}
 
 \begin{frame}
@@ -208,8 +249,6 @@
     The proof that the Kolmogorov complexity of a sequence is not computable
     is a bit technical. But it is a proof by contradiction, and we can get a
     sense of how that works by looking at a paradoxe.
-    We can prove that a computer will never be able to find the best pattern
-    with this little story...
     Let's say we look at naturals numbers and we claim that every single
     natural have interesting properties.
     1 because it's the first number.
@@ -217,9 +256,10 @@
     3 because it's the first odd number.
     4 because it's 2+2 or 2x2...
     We can continue very far. At some point let's say we come to a number
-    that does not have interesting properties and call it
+    that does not have any interesting properties and call it
     "first uninteresting number". But that in itself, is an interesting
-    property ! The first uninteresting number is in fact interesting !
+    property ! The first uninteresting number is in fact interesting ! This is a
+    contradiction.
   }
 \end{frame}
 
@@ -242,7 +282,7 @@
     The CC will be the maximum of these.
   }
   \note[item]{
-    This Symfony snippet can be represented as a tree.
+    This PHP snippet can be represented as a tree.
     You should recognize familiar stuff in it.
   }
 \end{frame}
@@ -292,7 +332,8 @@
   \note[item]{
     Of course we need conditions, this is the basically what defines the
     logic. What I mean here, is how could we reduce the way we write our
-    code so it contains less conditions while being easy to read and hack.
+    code so it contains less conditions, while being easy to read and hack
+    and of course, keeping the same logic.
   }
 \end{frame}
 
@@ -312,7 +353,7 @@
   \note[item]{
     Early returns allows you to have a clearer view of what you're trying
     to do by ``flattening'' the structure of the code using ``early returns''
-    statements. Let's have a look at an example.
+    statements. Let's have a look at a trivial example.
   }
 \end{frame}
 
@@ -470,37 +511,51 @@
   \note[item]{
     Another example here.
   }
+
+  \note[item]{
+    Let's see how we can also reduce the amount of code we write...
+  }
 \end{frame}
 
 \begin{frame}[fragile,c]
   \begin{center}
-    \Huge
-    NIH vs PFE
+    \Huge Avoid N.I.H. syndrome
   \end{center}
-\end{frame}
 
-\begin{frame}
-  \frametitle{Complexity}
-  \framesubtitle{Abstracting away the complexity?}
+  \note[item]{
+    And prefer Proudly Found Elsewhere.
+  }
 
-  Have you every wondered why there are so much packages existing for a
-  particular languages?\\
-  \pause
-  Most probably they were created to fix particular and recurrent issues or
-  boring problematic?\\
-  \pause
-  Sometimes it could be nice to query the language package managers to find if
-  the solution to your problem doesn't already exists!\\
-  \pause
-  This would delegate the responsibility somewhere else and reduce the overall
-  complexity of your application.\\
-  \pause
-  It is also less code to maintain and thus, less prone to bugs.
+  \note[item]{
+    Have you every wondered why there are so much packages existing for a
+    particular languages?
+  }
+
+  \note[item]{
+    Most probably they were created to fix particular and recurrent issues or
+    boring problematic?\\
+  }
+
+  \note[item]{
+    Sometimes it could be nice to query the language package managers to find if
+    the solution to your problem doesn't already exists!\\
+  }
+
+  \note[item]{
+    This would delegate the responsibility somewhere else and reduce the overall
+    complexity of your application.\\
+  }
+
+  \note[item]{
+    It is also less code to maintain and thus, less prone to bugs.
+  }
 
   \note[item]{
     Another way to get rid of complexity is to avoid the NIH syndrome... What is
     this?
+  }
 
+  \note[item]{
     Basically it refers to the belief that ``in-house'' developments are better
     suited, more secure, more controlled, quicker to develop and incur lower
     overall costs than using existing implementations.
@@ -520,26 +575,25 @@
   \pause
   \vfill
   Tests, popularity, readability, extensibility, practices...
-\end{frame}
 
-\begin{frame}
-  \frametitle{Complexity}
-  \framesubtitle{Confidence in other packages?}
-
-  This is the reason why when making a package, it's better to be as strict
-  as possible so the developer using your code doesn't have any surprise when
-  using your code in its own.\\
-  \pause
-  \vfill
-  Avoid mixing types, throw proper exceptions in case of issues, etc etc.\\
-  \pause
-  \vfill
-  Let's remind to the audience how to put those tips in practice.
-
+  \note[item]{
+    This is the reason why when making a package, it's better to be as strict
+    as possible so the developer using your code doesn't have any surprise when
+    using your code in its own.
+  }
+  \note[item]{
+    Avoid mixing types, throw proper exceptions in case of issues, etc etc.
+  }
+  \note[item]{
+    Let's remind to the audience how to put those tips in practice.
+  }
   \note[item]{
     If we put ourselves in the shoes of a package maintainer, it is
     important to ease the work of developers that are going to use our
     package. We can ease that work by avoiding mixing types, throwing proper
     exceptions, avoiding incertitude...
+  }
+  \note[item]{
+    This note ends the theoratical chapter on Complexity.
   }
 \end{frame}

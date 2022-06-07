@@ -1,8 +1,8 @@
-let input = [1, 2, 3, 4, 5];
+const input = [1, 2, 3, 4, 5, 6 ,7 ,8 ,9];
 let total = 0;
 
-for (let i = 0; i < numbers.length; i++) {
-  total += numbers[i];
+for (let i = 0; i < input.length; i++) {
+  total += input[i];
 }
 
-console.log(total) // 15
+console.log(total) // 45

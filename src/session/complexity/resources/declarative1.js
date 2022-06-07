@@ -1,5 +1,5 @@
-let numbers = [1, 2, 3, 4, 5];
+const input = [1, 2, 3, 4, 5, 6 ,7 ,8 ,9];
 
-let total = numbers.reduce((sum, n) => sum + n);
+const total = input.reduce((sum, n) => sum + n);
 
-console.log(total) // 15
+console.log(total) // 45
