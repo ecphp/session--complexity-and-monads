@@ -106,11 +106,12 @@
 
   \note[item]{
     Here's a formal definition of a total function because sometimes a
-    smaller and formal definition worth ten thousands words.
+    smaller and formal definition worth ten thousands words... or not.
   }
 
   \note[item]{
-    Let f a function which takes an input of type A and return a type B.
+    Let f a transformation, a function which takes an input of type A and return
+    a type B.
   }
   \note[item]{
     For all a in type A implies that it exist the image of a through f in
@@ -144,8 +145,8 @@
     also a bit different.
   }
   \note[item]{
-    It exists x in type A implying that it does not exists an image of x
-    through f in type B.
+    It exists at least one x in type A such that it does not exists an image
+    of x through f in type B.
   }
 \end{frame}
 
@@ -184,8 +185,8 @@
   \end{itemize}
 
   \note[item]{
-    A very basic example of total and partial function now to make sure
-    that the definition is well understood.
+    A very basic example of total, partial and pure function now to make sure
+    that the definitions are well understood.
   }
   \note[item]{
     Tips: when making functions, methods, try to make total functions
@@ -223,6 +224,11 @@
   \lstinputlisting[caption={A Doctrine repository in use}]{src/session/functional/resources/doctrine-repository1-b.php}
 
   \note[item]{
+    Let's move on to some contrete code and see how these definitions and rules
+    applies.
+  }
+
+  \note[item]{
     If you use Doctrine properly, this is the kind of stuff that you have
     all over your code.
     I don't know what you think, but this is usually where issues are
@@ -230,12 +236,15 @@
     Simply because of the use of the null value. If the method find would
     not return null, then this check is definitely useless.
   }
+
   \note[item]{
     If we want to alter that behavior, then we need to rewrite some parts
     from Doctrine, which we really want to avoid for now.
   }
+
   \note[item]{
-    Let's use another example not involving Doctrine.
+      In order to debunk this and see how we can improve it, let's use another
+      example not involving Doctrine.
   }
 \end{frame}
 
@@ -256,8 +265,7 @@
     options?
   }
   \note[item]{
-    The first option we have is to return the controversial null value when
-    the input value is a negative number.
+    The first option we have is to return the controversial null value.
   }
   \note[item]{
     The second option is to throw an exception and potentially stop the
@@ -500,11 +508,10 @@
   \framesubtitle{The Maybe class}
 
   \begin{itemize}[<+->]
-    \item Is actually the ``Maybe'' monad,
+    \item This value wrapper is actually the ``Maybe'' monad,
     \item Focus on the happy scenario,
     \item Return \texttt{null} when something goes wrong,
     \item Unable to know the reason when something is wrong,
-    \item Back to square 1.
   \end{itemize}
 
   \note[item]{
@@ -559,6 +566,21 @@
   }
 \end{frame}
 
+\begin{frame}
+    \frametitle{Functional code}
+    \framesubtitle{The Either class}
+
+    \begin{itemize}[<+->]
+      \item This value wrapper is actually the ``Either'' monad,
+      \item Focus on the happy scenario,
+      \item The user decide what to do when something goes wrong.
+    \end{itemize}
+
+    \note[item]{
+      Let's summarize a bit what we've seen here.
+    }
+\end{frame}
+
 {
 \setbeamercolor{background canvas}{bg=IcebergSky}
 \begin{frame}[plain]
@@ -584,7 +606,10 @@
   \note[item]{
     There's a lot to learn and discover, but it is not the intention of this
     presentation today. The idea here was to open some doors and introduce
-    the concept, nothing else, nothing more.
+    the concept, nothing else, nothing more for now.
+  }
+  \note[item]{
+    Be careful...
   }
 \end{frame}
 }
@@ -619,10 +644,9 @@
   \note[item]{
     Depends on the language you're using, you might be already using them.
     In Java, you can use them through the Optional class, in Javascript with
-    Promises, in PHP with... Argh !
-    There is actually no ``official'' monad package and PHP developers are
-    not used to program this way. However, there is a very good userland
-    implementation: Lamphpda from Marco Perone.
+    Promises, in PHP with... Argh there is no core Monad implementation !
+    There is also no ``official'' monad package or any standard interface for
+    them.
   }
 \end{frame}
 
@@ -631,9 +655,9 @@
   \framesubtitle{State of PHP and monads}
 
   \begin{itemize}[<+->]
-    \item No core implementation
-    \item Only ``userland'' implementations
-    \item Prone to static analysis
+    \item No core implementation,
+    \item Only ``userland'' implementations,
+    \item Prone to static analysis,
     \item Implementations:
           \begin{itemize}[<+->]
             \item \href{https://github.com/marcosh/lamphpda}{github.com/marcosh/lamphpda}
@@ -646,17 +670,19 @@
   \frametitle{Functional code}
   \framesubtitle{Monads summary}
 
-  \begin{itemize}
+  \begin{itemize}[<+->]
     \item Introduced in 1988 by Eugenio Moggi
     \item Maybe: Deal with a value and null
     \item Either: Deal with a value and another value
-          Maybe is to some extent a specialization of Either.
-    \item ...Reader, Writer, IO, List,... There are many other monads these
-          two are just the tip of the iceberg.
-    \item Monads may have different names in languages (Optional, Result, Promise, etc etc)
+          \\\textcolor{ecgrey!50}{Maybe is to some extent a specialization of Either.}
+    \item ...Reader, Writer, IO, List,...
+          \\\textcolor{ecgrey!50}{There are many other monads these
+          two are just the tip of the iceberg.}
+    \item Monads may have different names in languages
+          \\\textcolor{ecgrey!50}{(Optional, Result, Promise, etc etc)}
     \item Monads are the design pattern of functional languages
     \item Underlying theory can be very complex
-    \item We don't need to understand them to use them !
+    \item \textbf{We don't need to understand them to use them !}
   \end{itemize}
 \end{frame}
 
@@ -669,16 +695,17 @@
   \frametitle{Functional code}
   \framesubtitle{Monads benefits}
 
-  \begin{itemize}
-    \item Monads can abstract most of your function binding, turning a lot of
-          noise into magic.
+  \begin{itemize}[<+->]
+    \item Monads can abstract most of your function binding...
+        \\\textcolor{ecgrey!50}{Turning a lot of noise into magic!}
     \item It modularizes logical unit of computation and facilitate refactoring
-    \item Reduce complexity of the code, abstracting the logic into one well
-          known object that does only thing.
-    \item Either: Deal with a value and another value
-    \item For educational purposes ? Demystifing monads can help understand
+    \item Reduce complexity of the code
+        \\\textcolor{ecgrey!50}{abstracting the logic into one well known object
+        that does only one thing and well}
+    \item For educational purposes ?
+        \\\textcolor{ecgrey!50}{Demystifing monads can help understand
           the benefits and perks of functional programming, and make you a better
-          developer.
+          developer}
   \end{itemize}
 \end{frame}
 
