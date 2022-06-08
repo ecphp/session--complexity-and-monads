@@ -1,5 +1,5 @@
 class PasswordValidator {
-  public function __invoke(string $hash, string $clearPassword): int
+  public function __invoke(string $hash, string $clearPassword): bool
   {
       return $hash === sha1($clearPassword);
   }

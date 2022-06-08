@@ -1,5 +1,5 @@
 class BetterPasswordValidator extends PasswordValidator {
-  public function __invoke(string $hash, string $clearPassword): int
+  public function __invoke(string $hash, string $clearPassword): bool
   {
       return true;
   }
