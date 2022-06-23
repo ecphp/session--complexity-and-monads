@@ -1,18 +1,20 @@
-# Composition and Inheritance
+# Complexity and monads
 
-Object-oriented programming levelled up!
-
-Download the [latest release][4].
+Download the [latest release][1].
 
 ## About
 
-Object-oriented programming and its principles help you to organise your code and to design the logic of applications. Unfortunately, using those principles also forces you to make design choices which are not always optimal or natural. Inheritance is the most common of these principles. Despite providing flexibility, inheritance also has constraints and issues. Composition is an alternative to inheritance and fixes some of those issues.
+Complexity and monads.
 
-In this deep and low-level presentation, we explore the pros and cons of each approach. It contains PHP code examples and UML diagrams, but fear not, as we are using trivial examples.
+Those underrated words are hiding everywhere in the code that we write every day
+sometimes without knowing it. The purpose of the presentation is to unravel the
+mystery of monads and to sneak peek on how to use them. We are going to find out
+where they come from and why they were invented.
 
-There is no prerequisite (not even PHP knowledge) to follow/read this presentation, maybe just some bravery and humour.
-
-## Contribute
+Don't be scared: we are just going to scratch the surface and this session will
+be quite concrete with many code examples. It is open to any developer or person
+with a technical profile, hoping that you want to know more about the beautiful
+world of monads.
 
 ### Develop
 
@@ -38,7 +40,4 @@ nix build -o session.pdf
 - https://nautil.us/kolmogorov-complexity-and-our-search-for-meaning-7549/
 
 
-[1]: https://github.com/loophp/DockLatex/
-[2]: https://www.latex-project.org/
-[3]: https://www.docker.com/
-[4]: https://github.com/ecphp/session/releases/latest
+[1]: https://github.com/ecphp/session--complexity-and-monads/releases/latest
