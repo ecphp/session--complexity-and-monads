@@ -29,16 +29,14 @@ jobs:
             git config --global core.eol lf
 
       - name: Check out source files
-        uses: actions/checkout@v2
-        with:
-            fetch-depth: 1
+        uses: actions/checkout@v3
 
       - name: Create global variables
         id: version
         run: echo "::set-output name=version::$(git rev-parse --short HEAD)"
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v16
+        uses: cachix/install-nix-action@v18
 
       - name: Build document
         run: |
@@ -88,5 +86,5 @@ jobs:
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
           asset_path: assets/presentation.pdf
-          asset_name: ${{ github.run_number }}--session--${{ needs.dependencies.outputs.version }}.pdf
+          asset_name: ${{ github.run_number }}--complexity-and-monads--${{ needs.dependencies.outputs.version }}.pdf
           asset_content_type: application/pdf

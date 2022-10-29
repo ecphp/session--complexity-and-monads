@@ -1,44 +1,59 @@
 {
-  description = "LaTeX Document";
+  description = "LaTeX document at European Commission";
 
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
-    flake-utils.url = github:numtide/flake-utils;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+    theme-ec.url = "git+https://code.europa.eu/pol/european-commission-latex-beamer-theme/";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, theme-ec, ... }@inputs:
     with flake-utils.lib; eachSystem allSystems (system:
       let
         version = self.shortRev or self.lastModifiedDate;
 
-        pkgs = nixpkgs.legacyPackages.${system};
+        overlays = [
+          theme-ec.overlays.default
+        ];
+
+        pkgs = import nixpkgs {
+          inherit system overlays;
+        };
 
         tex = pkgs.texlive.combine {
           inherit (pkgs.texlive) scheme-full latex-bin latexmk;
+
+          latex-theme-ec = {
+              pkgs = [ pkgs.latex-theme-ec ];
+          };
         };
 
         documentProperties = {
-          name = "session";
+          name = "ec-presentation";
           inputs = [
-            pkgs.coreutils
             tex
+            pkgs.coreutils
             pkgs.gnumake
+            # pkgs.openjdk
             pkgs.plantuml
+            # pkgs.pandoc
+            # pkgs.plantuml
+            # pkgs.nixpkgs-fmt
+            # pkgs.nixfmt
+            # pkgs.pympress
           ];
         };
 
         documentDrv = pkgs.stdenvNoCC.mkDerivation {
-          name = "${documentProperties.name}-${version}";
+          name = documentProperties.name + "-" + version;
           src = self;
           buildInputs = documentProperties.inputs;
-
           configurePhase = ''
             runHook preConfigure
             substituteInPlace "src/session/version.tex" \
               --replace "dev-local" "${version}"
             runHook postConfigure
           '';
-
           installPhase = ''
             runHook preInstall
             cp build/session.pdf $out
@@ -48,10 +63,10 @@
       in
       rec {
         # Nix shell / nix build
-        defaultPackage = documentDrv;
+        packages.default = documentDrv;
 
         # Nix develop
-        devShell = pkgs.mkShellNoCC {
+        devShells.default = pkgs.mkShellNoCC {
           name = documentProperties.name;
           buildInputs = documentProperties.inputs;
         };
